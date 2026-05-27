@@ -1,0 +1,45 @@
+/* style.css */
+
+/* Le mur : gris très foncé, bords légèrement arrondis */
+.case-mur {
+    -fx-background-color: #3A3A3C;
+    -fx-background-radius: 8px;
+}
+
+/* Le sol : gris très clair, presque blanc */
+.case-sol {
+    -fx-background-color: #F2F2F7;
+    -fx-background-radius: 8px;
+}
+
+/* Le joueur : un cercle bleu vif */
+.case-joueur {
+    -fx-background-color: #007AFF;
+    -fx-background-radius: 20px; 
+}
+
+/* La caisse : un bloc orange */
+.case-caisse {
+    -fx-background-color: #FF9500;
+    -fx-background-radius: 8px;
+}
+
+/* La cible : un contour vert fin, fond clair */
+.case-cible {
+    -fx-background-color: #E5E5EA;
+    -fx-border-color: #34C759;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+/* La caisse bien placée sur une cible : bloc vert */
+.case-caisse-cible {
+    -fx-background-color: #34C759;
+    -fx-background-radius: 8px;
+}
+
+/* Le vide extérieur au niveau : totalement transparent */
+.case-vide {
+    -fx-background-color: transparent;
+}

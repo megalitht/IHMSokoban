@@ -34,7 +34,7 @@
          </children></VBox>
    </center>
    <top>
-      <ImageView fitHeight="121.0" fitWidth="251.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <ImageView fitHeight="120.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@Image/image_titre.png" />
          </image>

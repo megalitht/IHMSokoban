@@ -1,17 +1,17 @@
 package ihm.sokoban;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ChoiceDialog;
 import javafx.stage.Stage;
 
 
@@ -26,55 +26,30 @@ public class SokobanController implements Initializable{
 //*/
 
     @FXML
-    private void ButtonPlay() {
-        System.out.println("Lancement du jeu...");
+    private void ButtonPlay(javafx.event.ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ihm/sokoban/SelectMode.fxml"));
+            Parent root = loader.load();
 
-        List<String> niveaux = new ArrayList<>();
-        for (int i = 1; i <= 9; i++) {
-            niveaux.add("Niveau " + i);
-        }
+            javafx.scene.Node source = (javafx.scene.Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
 
-        ChoiceDialog<String> jeu = new ChoiceDialog<>("Niveau 1", niveaux);
-        jeu.setTitle("Lancement du jeu");
-        jeu.setHeaderText("Quel niveau voulez-vous jouer ?");
-        jeu.setContentText("Sélectionnez votre niveau :");
+            javafx.scene.Scene sceneMode = new javafx.scene.Scene(root);
+            stage.setScene(sceneMode);
+            stage.show();
 
-        Optional<String> reponse = jeu.showAndWait();
-
-        if (reponse.isPresent()) {
-            String niveauSelectionne = reponse.get();
-            System.out.println("Chargement du " + niveauSelectionne + "...");
-
-            switch (niveauSelectionne) {
-                case "Niveau 1":
-                    break;
-                case "Niveau 2":
-                    break;
-                case "Niveau 3":
-                    break;
-                case "Niveau 4":
-                    break;
-                case "Niveau 5":
-                    break;
-                case "Niveau 6":
-                    break;
-                case "Niveau 7":
-                    break;
-                case "Niveau 8":
-                    break;
-                case "Niveau 9":
-                    break;
-                default:
-                    break;
-            }
-        } else {
-            System.out.println("Aucun niveau sélectionné (Action annulée).");
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Navigation impossible");
+            alert.setContentText("Impossible de charger le menu principal.");
+            alert.showAndWait();
         }
     }
     
     @FXML
     private void AffichageCredits() {
-        System.out.println("Affichage des crédits...");
         Alert Credits = new Alert(Alert.AlertType.INFORMATION);
         Credits.setTitle("Crédits");
         Credits.setHeaderText("Crédits du projet Sokoban");
@@ -86,7 +61,6 @@ public class SokobanController implements Initializable{
 
     @FXML
     private void AffichageAide() {
-        System.out.println("Affichage de l'aide...");
         Alert Aide = new Alert(Alert.AlertType.INFORMATION);
         Aide.setTitle("Aide");
         Aide.setHeaderText("Aide pour Sokoban");
@@ -109,8 +83,6 @@ public class SokobanController implements Initializable{
 
         if (reponse.isPresent() && reponse.get() == ButtonType.YES) {
             Platform.exit();
-        } else {
-            System.out.println("On continue");
         }
     }
     
@@ -118,7 +90,6 @@ public class SokobanController implements Initializable{
     
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("Initialisation du contrôleur SokobanController...");
-        
+
 	}
 }

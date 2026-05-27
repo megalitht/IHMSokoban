@@ -1,2 +1,0 @@
-# IHMSokoban
-TP D'IHM 
